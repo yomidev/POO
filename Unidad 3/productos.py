@@ -79,6 +79,27 @@ def menu():
                 resultado.mostrar_info()
             else:
                 print("Producto no encontrado")
+        elif opcion == "4":
+            nombre = input("Ingresa el nombre del producto a actualizar")
+            producto = Producto.buscar_producto(nombre)
+            if producto:
+                nuevo_precio = input("Nuevo Precio (Deja vacio si no se actualizara): ")
+                nueva_cantidad = input("Nueva cantidad (Deja vacio si no se actualizara):")
+                producto.actualizar_datos(
+                    float(nuevo_precio) if nuevo_precio else None,
+                    int(nueva_cantidad) if nueva_cantidad else None
+                )
+            else:
+                print("Producto no encontrado")
         
-        
-        
+        elif opcion == "5":
+            nombre = input("Nombre del producto a eliminar: ")
+            Producto.eliminar_producto(nombre)
+        elif opcion == "6":
+            print(f"Valor total del inventario: ${Producto.valor_total()}")
+        elif opcion == "7":
+            print("Saliendo del sistema")
+            break;
+        else:
+            print("Opcion invalida, intente de nuevo")
+menu()
